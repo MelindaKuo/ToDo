@@ -2,7 +2,7 @@ import "./styles.css";
 import React, { useState } from "react";
 
 function Task({ task, completedTask }) {
-  return <button onClick={() => completedTask(task)}>{task}</button>;
+  return <button class = "buttonTasks" onClick={() => completedTask(task)}>{task}</button>;
 }
 
 export default function Todo() {
@@ -25,16 +25,22 @@ export default function Todo() {
       <div className="headers">
         <p>Completed Tasks : {completedCounter}</p>
         <input
+          className="input"
           type="text"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
         />
 
-        <button onClick={addTask}>Add</button>
+        <button
+          onClick={addTask}
+          style={{ borderRadius: "5px", padding: "5px 10px", margin: "0 5px" }}
+        >
+          Add
+        </button>
       </div>
       <div className="tasks">
         {tasks.map((task) => (
-          <Task className="tasks" task={task} completedTask={completeTask} />
+          <Task task={task} completedTask={completeTask} />
         ))}
       </div>
     </div>
